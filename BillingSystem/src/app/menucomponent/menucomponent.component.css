@@ -1,0 +1,40 @@
+.menu
+{
+border-radius: 1px;
+background-color:rgb(1, 142, 203);
+margin-bottom: 40px;
+padding-bottom:10px;
+justify-content: center;
+margin-top: -8px;
+margin-left: -8px;
+margin-right: -8px;
+padding-bottom: 5px;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img{
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+td
+{
+padding-right: 100px;
+justify-content: center;
+color: white;
+font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
+}
+button{
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: dodgerblue;
+    border: 0px;
+    color: white;
+    font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
+}
