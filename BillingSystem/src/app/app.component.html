@@ -3,20 +3,21 @@
 <p style="font-size: 40; font-weight: bold;font-stretch: expanded;color: white; text-align: center; margin-top: -75px;">Billing System</p>
 
 <div style="width: 1600px; margin-left: -15px; height: 30px;background-color:royalblue;margin-top: -20px;">
-  <button style="width: 70px; margin-left: 150px; height: 30px; background-color: transparent; border-color: transparent; ">Home</button>
+  <button style="width: 70px; margin-left: 150px; height: 30px; background-color: transparent; border-color: transparent; "(click)="goHome()">Home</button>
   <button style="width: 70px; margin-left: 180px; height: 30px; background-color: transparent; border-color: transparent;">Wallet</button>
   <button style="width: 70px; margin-left: 210px; height: 30px; background-color: transparent; border-color: transparent;">Help</button>
-  <button style="width: 70px; margin-left: 230px; height: 30px; background-color: transparent; border-color: transparent;">Log out</button>
-  <button style="width: 70px; margin-right: 10px; margin-left: 250px; height: 30px; background-color:aliceblue; border-color:dimgray;border-radius: 5px;">Log in</button>
-  <button style="width: 70px; margin-right: 15px; height: 30px; background-color:aliceblue; border-color:dimgray;border-radius: 5px;">Sign up</button>
+  <button style="width: 70px; margin-left: 230px; height: 30px; background-color: transparent; border-color: transparent;"(click)="LogOut()">Log out</button>
+  
+  <div *ngIf="userEmail; else noUserLoggedIn">
+    <p style="color: white; margin-left: 600px; margin-top: 7px;">Logged in as: {{ userEmail }}</p>
+  </div>
+  
+  <ng-template #noUserLoggedIn>
+    <p style="color: white; margin-left: 600px; margin-top: 7px;">No user logged in</p>
+  </ng-template>
+  
+  
+  
 </div>
 
-<div style="margin-top: 150px; margin-left: 150px;">
-  <img src="https://files.framed.axure.cloud/gsc/RLRG5B/88/39/90/8839902dd9b74752a9bf0dea09f7c48b/images/home/u0.png?pageId=95d2ec33-980f-4e76-9ee5-23ecb30836b9" style="width: 150px; margin-left: 50px;"/>
-  <img src="https://files.framed.axure.cloud/gsc/RLRG5B/88/39/90/8839902dd9b74752a9bf0dea09f7c48b/images/home/u1.png?pageId=95d2ec33-980f-4e76-9ee5-23ecb30836b9" style="width: 150px;margin-left: 350px;"/>
-  <img src="https://files.framed.axure.cloud/gsc/RLRG5B/88/39/90/8839902dd9b74752a9bf0dea09f7c48b/images/home/u2.png?pageId=95d2ec33-980f-4e76-9ee5-23ecb30836b9" style="width: 150px;margin-left: 450px; "/>
-</div>
-
-<button style="margin-top: 50px; width: 140px;margin-left: 200px; height: 30px; background-color:aliceblue;border-radius: 5px;border-color:dimgray;">Pay Electricity</button>
-<button style="margin-top: 50px; width: 140px;margin-left: 350px; height: 30px; background-color:aliceblue;border-radius: 5px;border-color:dimgray;">Pay Telephone</button>
-<button style="margin-top: 50px; width: 140px;margin-left: 450px; height: 30px; background-color:aliceblue;border-radius: 5px;border-color:dimgray;">Pay Water</button>
+<router-outlet></router-outlet>
