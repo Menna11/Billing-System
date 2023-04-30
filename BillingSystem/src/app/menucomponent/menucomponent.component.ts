@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import   {ActivatedRoute,Router} from '@angular/router';
 
 @Component({
   selector: 'app-menucomponent',
@@ -7,8 +8,15 @@ import { Component } from '@angular/core';
 })
 export class MenucomponentComponent {
    username:string="User";
+   UserLogged:boolean=true;
+   navigation:boolean=true;
+   isCancel=false;
 
+   constructor(private router: Router, private activedRoute: ActivatedRoute) {}
 
-  UserLogged:boolean=true;
-  
+  profile2Nav()
+  {
+    this.router.navigate(['/Profile2']);
+    this.navigation=false;
+  }
 }
