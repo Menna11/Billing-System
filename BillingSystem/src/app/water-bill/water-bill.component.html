@@ -1,0 +1,20 @@
+<div class="devs">
+        <label style="font-weight: bold; font-size: larger;">Bill for: </label>
+        <select>
+            <option value="ThisMonth">This Month</option>
+            <option value="PreviousMonth">Previous Month</option>
+            <option value="March">March</option>
+            <option value="February">February</option>
+        </select>
+</div>
+<div class="devs2">
+    <p>Unit Cost: {{waterunit}}</p>
+    <p>
+     <label class="unitlabel"> Units Consumed: </label> <input placeholder={{unitsconsumed}} readonly/> 
+    </p>
+    <label class ="unitlabel">Total Bill: </label> <input placeholder={{waterunit*unitsconsumed}} readonly/> 
+    <button> Pay </button>
+</div>
+
+
+

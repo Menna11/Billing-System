@@ -1,0 +1,20 @@
+<app-menucomponent></app-menucomponent>
+<div>
+<h3>Available phone numbers:</h3>
+<input [(ngModel)]="filterText" placeholder="   Filter...">
+<button id="addPhoneBtn" (click)="addNewPhone()" (click)="newPhone=!newPhone">Add a new phone number</button>
+</div>
+
+<table>
+    <tr>
+     <th >ID</th>
+     <th>Phone Number</th>
+     <th>Service Provider</th>
+    </tr>
+    <tr class="row">
+     <td>mmf</td>
+     <td>df</td>
+     <td>sc</td>
+    </tr>
+    <tr app-row (rowCancel)="isCancelMethod($event)"  *ngIf="newPhone"></tr>
+</table>
