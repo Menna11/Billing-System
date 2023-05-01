@@ -1,1 +1,24 @@
+
+<div style="width: 1600px; margin-left: -15px; height: 100px;background-color: black;margin-top: -15px;"></div>
+
+<p style="font-size: 40; font-weight: bold;font-stretch: expanded;color: white; text-align: center; margin-top: -75px;">Billing System</p>
+
+<div style="width: 1600px; margin-left: -15px; height: 30px;background-color:royalblue;margin-top: -20px;">
+  <button style="width: 70px; margin-left: 150px; height: 30px; background-color: transparent; border-color: transparent; "(click)="goHome()">Home</button>
+  <button style="width: 70px; margin-left: 180px; height: 30px; background-color: transparent; border-color: transparent;">Wallet</button>
+  <button style="width: 70px; margin-left: 210px; height: 30px; background-color: transparent; border-color: transparent;">Help</button>
+  <button style="width: 70px; margin-left: 230px; height: 30px; background-color: transparent; border-color: transparent;"(click)="LogOut()">Log out</button>
+  
+  <div *ngIf="userEmail; else noUserLoggedIn">
+    <p style="color: white; margin-left: 600px; margin-top: 7px;">Logged in as: {{ userEmail }}</p>
+  </div>
+  
+  <ng-template #noUserLoggedIn>
+    <p style="color: white; margin-left: 600px; margin-top: 7px;">No user logged in</p>
+  </ng-template>
+  
+  
+  
+</div>
+
 <router-outlet></router-outlet>
