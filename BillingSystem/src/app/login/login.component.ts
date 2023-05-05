@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { db } from '../firebase-config';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

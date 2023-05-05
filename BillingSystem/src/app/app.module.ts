@@ -1,8 +1,10 @@
+//MODULES are in the IMPORTS
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // Add this line
 import { Route, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -11,16 +13,17 @@ import { ElectricityBillComponent } from './user-dashboard/electricity-bill/elec
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
-
+//COMPONENTS are added in DECLARATIONS
 import { WaterBillComponent } from './water-bill/water-bill.component';
 import { MenucomponentComponent } from './menucomponent/menucomponent.component';
-import { Route, RouterModule } from '@angular/router';
 import { Profile2Component } from './profile2/profile2.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule } from '@angular/forms';
 import { RowComponent } from './row/row.component';
 
-
+//SERVICES are added in the PROVIDERS
+import { ProfileAndRowDataService } from './services/ProfileAndRowData/profile-and-row-data.service';
+import { GetCurrentUserService } from './services/getCurrentUser/get-current-user.service';
+import { AddNewPhoneService } from './services/addNewPhone/add-new-phone.service';
 
 const routes:Route[]=[
   {path:'HomePage',component:HomeComponent},
@@ -28,6 +31,7 @@ const routes:Route[]=[
   {path: 'Profile2',component:Profile2Component},
   {path:'**',redirectTo:'HomePage'}
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,10 +48,13 @@ const routes:Route[]=[
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ProfileAndRowDataService,
+    AddNewPhoneService,
+    GetCurrentUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
