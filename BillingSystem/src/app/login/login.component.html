@@ -1,9 +1,13 @@
+<!-- login.component.html -->
 
-<span class="home-text">Log In</span>
-<form (submit)="signIn()">
-    <input type="email" placeholder="Email" name="email" class = "emailcss "[(ngModel)]="email">
-    <input type="password" placeholder="Password" name="password" class= "passwordcss"[(ngModel)]="password">
-    <button type="submit" class = "buttoncss">Sign In</button>
+<div class="container">
+  <span class="home-text">Log In</span>
+  <form (submit)="signIn()">
+    <input type="email" placeholder="Email" name="email" class="emailcss" [(ngModel)]="email">
+    <input type="password" placeholder="Password" name="password" class="passwordcss" [(ngModel)]="password">
+    <button type="submit" class="signupbtncss">Sign In</button>
   </form>
-  <span class="signupwordcss">Don't have an account ?</span>
-  <button class="signupbtncss"(click)="SignUp()">Sign Up</button>
+  <span class="signupwordcss">Don't have an account?</span>
+  <button class="signupbtncss" (click)="SignUp()">Sign Up</button>
+</div>
+

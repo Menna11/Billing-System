@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword,updateProfile } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword,updateProfile ,updatePhoneNumber} from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
@@ -46,6 +46,7 @@ export class SignupComponent implements OnInit {
         const database = getDatabase();
         const usersRef = ref(database, 'users/' + this.displayName);
        updateProfile(user,{displayName:this.displayName})
+      // updatePhoneNumber(user,{phoneNumber:this.mobilenumber})
         
 
 

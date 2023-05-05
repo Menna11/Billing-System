@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getAuth, onAuthStateChanged,signOut } from 'firebase/auth';
 
@@ -10,6 +10,7 @@ import { getAuth, onAuthStateChanged,signOut } from 'firebase/auth';
 export class AppComponent implements OnInit{
   title = 'BillingSystem';
   userEmail: string = '';
+  showForm: boolean = true;
 
   constructor(private router: Router, private activedRoute: ActivatedRoute) {}
 
@@ -40,6 +41,18 @@ goHome()
   }
 
 }
+
+wallet()
+{
+  const auth = getAuth();
+  if (auth.currentUser)
+  {
+    this.router.navigate(['wallet']);
+  }
+  else {
+  alert("No User Logged In");
+  }
+}
  
 
 
@@ -49,7 +62,7 @@ goHome()
     {
     signOut(auth).then(() => {
       // Sign-out successful.
-      console.log('User signed out');
+      console.log('signed out');
       this.userEmail = '';
       this.router.navigate(['']);
     }).catch((error) => {
@@ -61,9 +74,19 @@ goHome()
     alert("No User Logged In");
 
   }
-
-
-
   }
+  isAdmin() {
+    // replace the following line with the logic that checks if the current user is an admin
+    return this.userEmail === 'admin@admin.com';
+  }
+  userwallet()
+  {
+    this.router.navigate(['adminwallet']);
+  }
+  adminElec()
+  {
+    this.router.navigate(['adminelec']);
+  }
+  
 
 }

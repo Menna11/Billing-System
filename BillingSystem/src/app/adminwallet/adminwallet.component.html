@@ -1,0 +1,12 @@
+<div class="card body">
+    <h3>Charge a wallet of a user</h3>
+    <form (submit)="submit()">
+      <label> Name</label>
+      <input type="text" id="userName" name="userName"  [(ngModel)]="display"/>
+      <label> Amount to add</label>
+      <input type="number" id="amount" name="amount"[(ngModel)]="amount" />
+  
+      <button type="submit" class="w-btn">Charge Wallet</button>
+    </form>
+  </div>
+  
