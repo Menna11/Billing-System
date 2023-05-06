@@ -4,7 +4,6 @@
 <input [(ngModel)]="filterText" (emptied)="ngOnInit()" (emptied)="isFilterInput=!isFilterInput" (change)="filterMethod()" placeholder="   Filter...">
 <button id="addPhoneBtn" (click)="addNewPhone()" (click)="newPhone=!newPhone">Add a new phone number</button>
 </div>
-<p>{{isFilterInput}}</p>
 <table>
     <tr>
      <th >ID</th>

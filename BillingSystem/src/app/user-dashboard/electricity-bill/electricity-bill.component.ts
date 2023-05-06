@@ -1,4 +1,4 @@
-iport { Component   } from '@angular/core';
+import { Component   } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable,Subject } from 'rxjs';
 
@@ -167,7 +167,7 @@ Pay(bill: Bill) {
 }
  
 
-}
+
 
   submitBill() {
     const auth = getAuth();

@@ -6,6 +6,8 @@
     <h1 class="logo-text">Billing System</h1>
   </div>
   <nav class="nav">
+    <img src="./assets/images/profile.png" (click)="profile2Nav()">
+            
     <a *ngIf="!isAdmin() && !isService()" (click)="goHome()" class="nav-link">Home</a>
     <a *ngIf="!isAdmin() && !isService()" (click)="wallet()" class="nav-link">Wallet</a>
     <a *ngIf="isAdmin()"  (click)="userwallet()"class="nav-link">User's Wallet</a>

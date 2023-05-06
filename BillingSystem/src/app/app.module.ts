@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms'; // Add this line
 import { Route, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ElectricityBillComponent } from './user-dashboard/electricity-bill/electricity-bill.component';
@@ -88,14 +86,14 @@ const routes:Route[]=[
     AppRoutingModule,
     HttpClientModule,
     MatButtonModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    RouterModule.forRoot(routes)
     
   ],
   exports:[
     MatButtonModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes),
     MatTableModule,
     MatCheckboxModule
   ],

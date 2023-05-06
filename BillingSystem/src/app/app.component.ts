@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   title = 'BillingSystem';
   userEmail: string = '';
   showForm: boolean = true;
+  navigation=false;
 
   constructor(private router: Router, private activedRoute: ActivatedRoute,private toastr: ToastrService) {}
   
@@ -42,7 +43,12 @@ export class AppComponent implements OnInit{
     });
   }
 
-  
+  profile2Nav()
+  {
+    this.router.navigate(['/Profile2']);
+    this.navigation=false;
+  }
+
 goHome()
 {
   const auth = getAuth();

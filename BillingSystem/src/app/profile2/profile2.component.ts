@@ -87,7 +87,11 @@ export class Profile2Component implements OnInit{
         this.myUser.serviceProviders[PhonesCounter]='Orange';  
         break;
       }
-
+      case '015':
+        {
+          this.myUser.serviceProviders[PhonesCounter]='We';  
+          break;
+        }
     }
   }
 
