@@ -4,6 +4,7 @@ import { getDatabase, ref, set } from 'firebase/database';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService, IndividualConfig } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
+import { Observable,Subject } from 'rxjs';
 
 
 interface WALLET {
@@ -51,6 +52,22 @@ export class SignupComponent implements OnInit {
 
   }
 
+  createElecBill(): Observable<any> {
+    
+    // Get the authenticated user's ID token
+    
+    const url = `https://billing-system-5d5f0-default-rtdb.europe-west1.firebasedatabase.app`;
+      // Set the data for the new node
+      const data = { currentbillid: 2 };
+      // Send the HTTP request to create the new node
+     return this.http.put(`${url}/users/${this.displayName}/Bills/ElecBill.json`, data);
+    
+  
+}
+
+
+
+
   signUp() {
 
     if (this.password !== this.confirmpassword) {
@@ -87,6 +104,7 @@ export class SignupComponent implements OnInit {
           uid: user.uid
         }).then(() => {
           this.addwallet();
+          this.createElecBill().subscribe();
           this.toastr.success(`User Created Successfuly`);
           this.router.navigate(['home']);
 
