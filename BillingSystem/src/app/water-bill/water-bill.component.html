@@ -1,0 +1,46 @@
+<app-menucomponent></app-menucomponent>
+
+<div class="devs">
+        <label style="font-weight: bold; font-size: larger;">Bill for: </label>
+        <select (change)="SetDropDownValue($event)">
+            <option value="">Select</option>
+            <option value="thismonth">This Month</option>
+            <option value="previousmonth">Previous Month</option>
+        </select>
+</div>
+
+<div class="devs2"  [ngSwitch] = 'dropDownValue'>
+        <p>Unit Cost: {{waterunit}}</p>
+        <p *ngSwitchCase="'thismonth'">
+            <label class="unitlabel"> Units Consumed: </label> <input placeholder={{userinfo.waterbills.thismonth.unitsconsumed}} readonly/> 
+        </p>
+        <p *ngSwitchCase="'thismonth'">
+             <label class ="unitlabel">Total Bill: </label> <input  placeholder={{waterunit*userinfo.waterbills.thismonth.unitsconsumed}} readonly/> 
+        </p>
+         <p *ngSwitchCase="'thismonth'">
+            <label class ="unitlabel">Due Date: </label> <input placeholder={{userinfo.waterbills.thismonth.duedate}} readonly/> 
+         </p> 
+         <p *ngSwitchCase="'thismonth'">
+            <label class ="unitlabel">Status: </label> <input placeholder={{userinfo.waterbills.thismonth.status}} readonly/> 
+         </p> 
+        <p *ngSwitchCase="'previousmonth'">
+        <label class="unitlabel"> Units Consumed: </label> <input placeholder={{userinfo.waterbills.previousmonth.unitsconsumed}} readonly/> 
+        </p>
+          <p *ngSwitchCase="'previousmonth'">
+             <label class ="unitlabel">Total Bill: </label> <input placeholder={{waterunit*userinfo.waterbills.previousmonth.unitsconsumed}} readonly/> 
+          </p>
+        <p *ngSwitchCase="'previousmonth'">
+            <label class ="unitlabel">Due Date: </label> <input placeholder={{userinfo.waterbills.previousmonth.duedate}} readonly/> 
+        </p>
+        <p *ngSwitchCase="'previousmonth'">
+            <label class ="unitlabel">Status: </label> <input placeholder={{userinfo.waterbills.previousmonth.status}} readonly/> 
+        </p>
+        <button *ngIf="showbtn"> Pay </button>
+</div>
+   
+
+
+
+
+
+

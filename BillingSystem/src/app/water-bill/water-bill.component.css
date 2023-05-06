@@ -1,0 +1,33 @@
+.devs{
+    margin: auto;
+    width:20%;
+    justify-content: center;
+}
+.devs2
+{
+    margin: auto;
+    width:20%;
+    justify-content:center;
+    padding-top: 5px;
+    font-size: large;
+    margin-top: 5px;
+}
+.unitlabel{
+    display: inline-block; 
+    width: 90x; 
+    text-align: right;
+}
+input{
+    border-radius: 5px;
+    margin-left: 5px;
+    
+}
+button{
+    margin-top: 50px; 
+    width: 140px;
+    margin-left: 10px;
+    height: 30px; 
+    background-color:aliceblue;
+    border-radius: 5px;
+    border-color:dimgray;
+}

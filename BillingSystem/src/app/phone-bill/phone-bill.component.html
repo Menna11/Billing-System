@@ -1,0 +1,32 @@
+<app-menucomponent></app-menucomponent>
+
+<div class="devs">
+    <label style="font-weight: bold; font-size: larger;">Phone Number: </label>
+    <select (change)="SetDropDownValue($event)">
+        <option value="">Select</option>
+        <option *ngFor="let phone of phones; let i=index" value={{phone}}>{{phone}}</option>
+    </select>
+</div>
+
+<div class="billstable">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Phone Number</th>
+                <th>Service Provider</th>
+                <th>Plan</th>
+                <th>Price</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let phone of phones;">
+                <td>{{phone}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
