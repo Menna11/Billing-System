@@ -11,6 +11,7 @@
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 50px;
+  font-family:Helvetica;
 }
 
 form {
@@ -53,6 +54,7 @@ button {
 .signupwordcss {
   font-size: 16px;
   margin-bottom: 20px;
+  font-family:Helvetica;
 }
 
 .signupbtncss {
@@ -61,9 +63,12 @@ button {
   background-color: #0477e4;
   border: 2px solid none;
   border-radius: 5px;
-  color: #292424;
+  color: #F5F5F5;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+}
+.signupbtncss:hover{
+  background-color: #0356a3;
 }
 

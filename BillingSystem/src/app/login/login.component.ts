@@ -41,9 +41,10 @@ export class LoginComponent {
 
           this.router.navigate(['admin']);
         } 
-        else if (this.email === 'a'|| this.password === 'a')
+        else if (this.email === 'service@serice.com'|| this.password === 'service123')
         {
-          this.toastr.success('Please provide your information', 'Fail', toastConfig);
+          this.toastr.success('Service Provider Signed in', 'Success', toastConfig);
+          this.router.navigate(['service']);
         }
         
         
@@ -53,6 +54,7 @@ export class LoginComponent {
         }
       })
       .catch((error) => {
+        this.toastr.error(`Error Signing In`);
         // Handle sign-in errors.
         console.error('Error signing in:', error);
       });

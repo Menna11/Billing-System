@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { getAuth, createUserWithEmailAndPassword,updateProfile ,updatePhoneNumber} from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService, IndividualConfig } from 'ngx-toastr';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -21,7 +22,7 @@ export class SignupComponent implements OnInit {
   mobilenumber='';
   auth: any;
 
-  constructor(private router: Router, private activedRoute: ActivatedRoute) {}
+  constructor(private router: Router, private activedRoute: ActivatedRoute,private toastr: ToastrService) {}
 
   ngOnInit() {
     this.auth = getAuth();
@@ -61,19 +62,16 @@ export class SignupComponent implements OnInit {
           password: this.password,
           uid: user.uid
         }).then(() => {
-          alert("User Created Successfuly !!");
-          console.log('User information added to database');
-          console.log('displayname'+this.displayName);
+          this.toastr.success(`User Created Successfuly`);
           this.router.navigate(['home']);
 
         }).catch((error) => {
-          console.log('Error adding user information to database:', error);
+          this.toastr.error(`Error adding user information to the database`);
         });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // Handle error
+        this.toastr.error(`Error adding user information to the database`);
+        
       });
   }
 }

@@ -17,6 +17,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WalletComponent } from './wallet/wallet.component';
 import { AdminwalletComponent } from './adminwallet/adminwallet.component';
 import { AdminelecComponent } from './adminelec/adminelec.component';
+import { AdminsearchComponent } from './adminsearch/adminsearch.component';
+import { ServiceproviderComponent } from './serviceprovider/serviceprovider.component';
+import { ServofferComponent } from './servoffer/servoffer.component';
+import { ServofferviewComponent } from './servofferview/servofferview.component';
+import { ServofferdeleteComponent } from './servofferdelete/servofferdelete.component';
 
 
 @NgModule({
@@ -29,7 +34,12 @@ import { AdminelecComponent } from './adminelec/adminelec.component';
     AdminComponent,
     WalletComponent,
     AdminwalletComponent,
-    AdminelecComponent
+    AdminelecComponent,
+    AdminsearchComponent,
+    ServiceproviderComponent,
+    ServofferComponent,
+    ServofferviewComponent,
+    ServofferdeleteComponent
    
   ],
   imports: [

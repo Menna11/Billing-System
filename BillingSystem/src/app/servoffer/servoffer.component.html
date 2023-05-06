@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Offer Name</th>
+            <th>Price</th>
+            <th>Service Provider</th>
+            <th>Action</th>
+          </tr>
+        <tr>
+            <td><input type="text" [(ngModel)]="newOffer.name" /></td>
+            <td><input type="number" min="0" [(ngModel)]="newOffer.price" /></td>
+            <td><select name="status" [(ngModel)]="newOffer.sp" required>
+                <option value="orange">Orange</option>
+                <option value="vodafone">Vodafone</option>
+                <option value="etisalat">Etisalat</option>
+              </select>
+            </td>
+          
+            <td><button class="pay-btn" (click)="addOffer()">Add Offer</button></td>
+          </tr>
+    </thead>
+  </table>
