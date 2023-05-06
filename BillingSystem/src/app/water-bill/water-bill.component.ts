@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { DataSnapshot, child, get, set } from 'firebase/database';
+import { Component,OnInit } from '@angular/core';
 import {db} from 'src/app/firebase-config'
-import { getDatabase, ref, onValue} from "firebase/database";
+import { ref} from "firebase/database";
+import { FirebaseService } from '../firebase.service';
+import { getAuth } from 'firebase/auth';
+
 
 @Component({
   selector: 'app-water-bill',
@@ -10,27 +12,53 @@ import { getDatabase, ref, onValue} from "firebase/database";
 })
 
 
-export class WaterBillComponent 
+export class WaterBillComponent implements OnInit
 {
+  userinfo:any=[];
   waterunit:any;
   unitsconsumed:any;
-  totalbill:any;
-  constructor()
+
+  bill:any;
+  showbtn:any=true;
+  status:any;
+  
+  public dropDownValue = "";
+  
+  SetDropDownValue(drpValue : any) 
   {
-    const water = ref(db);
-    get(child(water,'waterunitcost')).then((snapshot)=>{
-      const unit=snapshot.val();
-      this.waterunit=unit;
-  })
-
-  this.unitsconsumed=this.getRandomInt(100,200);
-  this.totalbill=this.unitsconsumed*this.waterunit;
-   
+    const auth = getAuth();
+    if (auth.currentUser) 
+    {
+       const dn = auth.currentUser.displayName;
+    this.dropDownValue = drpValue.target.value;
+    this.fbservice.getwaterbillstatus(dn,this.dropDownValue).subscribe((data:{})=>{
+      this.bill=data;})
+      if(this.bill.status=="Paid"){
+        this.showbtn=false;
+      }
+    }
   }
-   getRandomInt(min:number, max:number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  constructor(public fbservice:FirebaseService)
+  {
+   ref(db);
   }
-
+  ngOnInit() 
+  {
+    const auth = getAuth();
+    if (auth.currentUser) 
+    {
+       const dn = auth.currentUser.displayName;
+       console.log(dn);
+       this.fbservice.getUserBill(dn).subscribe((data:{})=>{
+        this.userinfo=data;});
+        this.fbservice.getwaterunitcost().subscribe((data:{})=>{
+          this.waterunit=data;});
+    }
+  } 
 }
+
+ 
+
+ 
+
+
