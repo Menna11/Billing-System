@@ -10,4 +10,10 @@ export class UserDashboardComponent {
   PayElec() {
     this.router.navigate(['PayElectricty']);
   }
+  waterbtn(){
+    this.router.navigate(['WaterBill']);
+  };
+  phonebtn(){
+    this.router.navigate(['PhoneBill']);
+  }
 }

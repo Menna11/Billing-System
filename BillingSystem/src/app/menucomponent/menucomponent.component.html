@@ -1,0 +1,44 @@
+<html>
+    <div class="menu">   
+        <table>
+            <tr>
+                <td style="font-size:x-large;">
+                    Billing System
+                </td>
+                <td>
+                    <a routerLink="/HomePage" routerLinkActive="active" style="color:white;">
+                        Home
+                    </a>
+                </td>
+                <td>
+                    <a routerLink="/Bills" routerLinkActive="active" style="color:white;">
+                        Bills
+                    </a>
+                </td>
+                <td>
+                    <a routerLink="/HomePage" routerLinkActive="active" style="color:white;">
+                        Wallet
+                    </a>
+                </td>
+                <td>
+                    <a routerLink="/HomePage" routerLinkActive="active" style="color:white;">
+                        Help
+                    </a>
+                </td>
+                <td *ngIf="UserLogged; else elseblock">
+                    <img src="./assets/images/profile.png" (click)="profile2Nav()">
+                    <div style="margin-left: 40px;margin-top: -25px;" (click)="profile2Nav()">{{username}}</div>
+                </td>
+                <ng-template #elseblock>
+                    <td>
+                        <button>LogIn</button>
+                        Or
+                        <button>SignUp</button>
+                    </td>
+                </ng-template>
+                
+        </table>
+       
+    </div>
+
+</html>

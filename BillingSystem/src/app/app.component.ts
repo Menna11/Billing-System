@@ -7,6 +7,7 @@ import { ToastrService, IndividualConfig } from 'ngx-toastr';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit{
   title = 'BillingSystem';
   userEmail: string = '';

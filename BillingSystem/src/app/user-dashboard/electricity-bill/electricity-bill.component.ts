@@ -1,10 +1,12 @@
-import { Component   } from '@angular/core';
+iport { Component   } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable,Subject } from 'rxjs';
+
 import { getAuth } from 'firebase/auth';
 import { of } from 'rxjs';
 import { getDatabase, ref, set,child ,update} from 'firebase/database';
 import { db } from '../../firebase-config';
+
 import { ToastrService, IndividualConfig } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
 
@@ -31,7 +33,6 @@ interface Bill {
   status: string;
 }
 
-
 @Component({
   selector: 'app-electricity-bill',
   templateUrl: './electricity-bill.component.html',
@@ -52,7 +53,6 @@ export class ElectricityBillComponent {
   constructor(private http: HttpClient,private toastr: ToastrService) {}
 
   
-  
   ngOnInit() {
     // Retrieve user data from server
     this.getUserData().subscribe((data) => {
@@ -62,10 +62,6 @@ export class ElectricityBillComponent {
       console.log("test",ar);
       console.log("balance",this.balance);
     });
-
-    
-
-
 
     this.getUserBillsUnpaid().subscribe((billsdata) => {
       this.bills = billsdata;
@@ -144,6 +140,7 @@ searchUserByEmail(email: string) {
     }
   });
 }
+
 Pay(bill: Bill) {
   const auth = getAuth();
   if (auth.currentUser) {
@@ -170,4 +167,25 @@ Pay(bill: Bill) {
 }
  
 
+}
+
+  submitBill() {
+    const auth = getAuth();
+    if (auth.currentUser && this.user) {
+      const dn = auth.currentUser.displayName;
+      const url = `https://billing-system-5d5f0-default-rtdb.europe-west1.firebasedatabase.app/users/${dn}.json`;
+      const data = { ...this.user, elecunits: this.totalUnits };
+      this.http.put(url, data).subscribe(
+        () => {
+          console.log('Bill submitted successfully');
+        },
+        (error) => {
+          console.log('Error submitting bill:', error);
+        }
+      );
+    } else {
+      console.log('User not authenticated');
+      alert('No User Logged In');
+    }
+  }
 }

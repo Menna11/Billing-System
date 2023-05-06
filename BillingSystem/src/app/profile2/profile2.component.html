@@ -1,0 +1,36 @@
+<app-menucomponent></app-menucomponent>
+<div>
+<h3>Available phone numbers:</h3>
+<input [(ngModel)]="filterText" (emptied)="ngOnInit()" (emptied)="isFilterInput=!isFilterInput" (change)="filterMethod()" placeholder="   Filter...">
+<button id="addPhoneBtn" (click)="addNewPhone()" (click)="newPhone=!newPhone">Add a new phone number</button>
+</div>
+<p>{{isFilterInput}}</p>
+<table>
+    <tr>
+     <th >ID</th>
+     <th>Phone Number</th>
+     <th>Service Provider</th>
+    </tr>
+
+    <ng-template *ngIf="isFilterInput; else elseblock">
+    <tr *ngFor="let filteredPhone of this.filteredPhones; 
+    let i = index">
+    <td>{{i}}</td>  
+    <td>{{filteredPhone}}</td>
+    <td>{{this.filteredService[i]}}</td>
+    
+    </tr>
+    </ng-template>
+    
+    <ng-template #elseblock>
+     <tr class="row" *ngFor="let myphone of this.myUser.ownedPhones; 
+      let i = index">
+      <td>{{i}}</td>  
+      <td>{{myphone}}</td>
+      <td>{{this.myUser.serviceProviders[i]}}</td>
+    </tr>
+    </ng-template>
+
+
+    <tr app-row (rowCancel)="isCancelMethod($event)" (rowAdd)="isAddMethod($event)"  *ngIf="newPhone"></tr>
+</table>
