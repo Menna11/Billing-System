@@ -1,24 +1,36 @@
-
 <div style="width: 1600px; margin-left: -15px; height: 100px;background-color: black;margin-top: -15px;"></div>
 
-<p style="font-size: 40; font-weight: bold;font-stretch: expanded;color: white; text-align: center; margin-top: -75px;">Billing System</p>
-
-<div style="width: 1600px; margin-left: -15px; height: 30px;background-color:royalblue;margin-top: -20px;">
-  <button style="width: 70px; margin-left: 150px; height: 30px; background-color: transparent; border-color: transparent; "(click)="goHome()">Home</button>
-  <button style="width: 70px; margin-left: 180px; height: 30px; background-color: transparent; border-color: transparent;">Wallet</button>
-  <button style="width: 70px; margin-left: 210px; height: 30px; background-color: transparent; border-color: transparent;">Help</button>
-  <button style="width: 70px; margin-left: 230px; height: 30px; background-color: transparent; border-color: transparent;"(click)="LogOut()">Log out</button>
-  
-  <div *ngIf="userEmail; else noUserLoggedIn">
-    <p style="color: white; margin-left: 600px; margin-top: 7px;">Logged in as: {{ userEmail }}</p>
+<header [ngClass]="{'header': isAdmin(), 'header1': !isAdmin(),'header2': isService()}">
+  <div class="logo-container">
+    <img src="logo.ico" alt="Logo" class="logo">
+    <h1 class="logo-text">Billing System</h1>
   </div>
-  
-  <ng-template #noUserLoggedIn>
-    <p style="color: white; margin-left: 600px; margin-top: 7px;">No user logged in</p>
-  </ng-template>
-  
-  
-  
-</div>
+  <nav class="nav">
+    <img src="./assets/images/profile.png" (click)="profile2Nav()">
+            
+    <a *ngIf="!isAdmin() && !isService()" (click)="goHome()" class="nav-link">Home</a>
+    <a *ngIf="!isAdmin() && !isService()" (click)="wallet()" class="nav-link">Wallet</a>
+    <a *ngIf="isAdmin()"  (click)="userwallet()"class="nav-link">User's Wallet</a>
+    <a *ngIf="isAdmin()"  (click)="adminElec()"class="nav-link">Admin Elec</a>
+    <a *ngIf="isAdmin()"  (click)="searchuser()"class="nav-link">Search user</a>
+    <a *ngIf="isService()"  (click)="addoffer()"class="nav-link">Add Offer</a>
+    <a *ngIf="isService()"  (click)="viewoffer()"class="nav-link">View Offers</a>
+    <a *ngIf="isService()"  (click)="deleteoffer()"class="nav-link">Delete Offer</a>
+    <a  class="nav-link">Help</a>
+    <a  (click)="LogOut()"class="nav-link">Sign Out</a>
+    
 
-<router-outlet></router-outlet>
+    <div class="user-info" *ngIf="userEmail; else noUserLoggedIn">
+      Logged in as: {{ userEmail }}
+    </div>
+    <ng-template #noUserLoggedIn>
+      No user logged in
+    </ng-template>
+  </nav>
+</header>
+
+
+<main class="main">
+  <router-outlet></router-outlet>
+</main>
+

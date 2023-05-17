@@ -1,0 +1,68 @@
+<div>
+    <form (submit)="submit()">
+        <label> User's name</label>
+        <input type="text" id="userName" name="userName"  [(ngModel)]="display"/>
+    
+        <button type="submit" class="w-btn">Show User's Bills</button>
+      </form>
+</div>
+
+<div class="container">
+    <h1 class="title">Electricity Bills</h1>
+  
+    <div class="menu">
+        <button class="menu-option" (click)="showBillData()">Bill's Data</button>
+        <button class="menu-option" (click)="showAddBillForm()">Add Bill</button>
+    </div>
+  
+    <div *ngIf="showBillDataFlag">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Price</th>
+            <th>Units used</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bill of bills">
+            <td class="amount">{{ bill.price }}LE</td>
+            <td class="status">{{ bill.units }}</td>
+            <td class="status">{{ bill.status }}</td>
+            <td class="Date">{{ bill.date }}</td>
+            <td><button class="pay-btn" (click)="pay(bill)">Pay Now</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div *ngIf="showAddBillFormFlag">
+      <table class="table">
+        <thead>
+            <tr>
+                <th>Price</th>
+                <th>Units used</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            <tr>
+                <td><input type="number" min="0" [(ngModel)]="newBill.price" /></td>
+                <td><input type="number" min="0" [(ngModel)]="newBill.units" /></td>
+                <td><select name="status" [(ngModel)]="newBill.status" required>
+                    <option value="paid">Paid</option>
+                    <option value="unpaid">Unpaid</option>
+                  </select>
+                </td>
+                <td><input type="date" [(ngModel)]="newBill.date" /></td>
+                <td><button class="pay-btn" (click)="addBill()">Add Bill</button></td>
+              </tr>
+        </thead>
+      </table>
+    </div>
+
+
+  </div>
+  

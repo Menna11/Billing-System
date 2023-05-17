@@ -1,0 +1,23 @@
+<div class="container">
+    <h1 class="title">Offers</h1>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Offer Name</th>
+          <th>Price</th>
+          <th>Service Provider</th>
+          <th>Action</th>
+    
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let offer of offers">
+          <td class="amount">{{ offer.name }}</td>
+          <td class="status">{{ offer.price }}LE</td>
+          <td class="status">{{ offer.sp }}</td>
+          <td><button class="pay-btn"(click)="Delete(offer)">Delete Offer</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

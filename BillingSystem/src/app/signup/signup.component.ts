@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword,updateProfile } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword,updateProfile ,updatePhoneNumber} from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService, IndividualConfig } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
+import { Observable,Subject } from 'rxjs';
+
+
+interface WALLET {
+  balance:number ;  
+}
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -20,12 +28,45 @@ export class SignupComponent implements OnInit {
   address = '';
   mobilenumber='';
   auth: any;
+  wallet:WALLET = {
+    balance:0,
 
-  constructor(private router: Router, private activedRoute: ActivatedRoute) {}
+
+  }
+
+  constructor(private router: Router, private activedRoute: ActivatedRoute,private toastr: ToastrService,private http: HttpClient) {}
 
   ngOnInit() {
     this.auth = getAuth();
   }
+
+  addwallet()  {
+    const url = `https://billing-system-5d5f0-default-rtdb.europe-west1.firebasedatabase.app/users/${this.displayName}/Wallet.json`;
+    this.http.patch(url,this.wallet).subscribe((response) => {
+      this.toastr.success(``);
+      }, (error) => {
+        this.toastr.error(``);
+      });
+
+
+
+  }
+
+  createElecBill(): Observable<any> {
+    
+    // Get the authenticated user's ID token
+    
+    const url = `https://billing-system-5d5f0-default-rtdb.europe-west1.firebasedatabase.app`;
+      // Set the data for the new node
+      const data = { currentbillid: 2 };
+      // Send the HTTP request to create the new node
+     return this.http.put(`${url}/users/${this.displayName}/Bills/ElecBill.json`, data);
+    
+  
+}
+
+
+
 
   signUp() {
 
@@ -33,6 +74,8 @@ export class SignupComponent implements OnInit {
       alert("Passwords don't match");
       return;
     }
+
+  
 
 
     createUserWithEmailAndPassword(this.auth, this.email, this.password)
@@ -46,6 +89,7 @@ export class SignupComponent implements OnInit {
         const database = getDatabase();
         const usersRef = ref(database, 'users/' + this.displayName);
        updateProfile(user,{displayName:this.displayName})
+      // updatePhoneNumber(user,{phoneNumber:this.mobilenumber})
         
 
 
@@ -56,23 +100,21 @@ export class SignupComponent implements OnInit {
           lastname: this.lastname,
           address: this.address,
           mobilenumber: this.mobilenumber,
-         
           password: this.password,
           uid: user.uid
         }).then(() => {
-          alert("User Created Successfuly !!");
-          console.log('User information added to database');
-          console.log('displayname'+this.displayName);
+          this.addwallet();
+          this.createElecBill().subscribe();
+          this.toastr.success(`User Created Successfuly`);
           this.router.navigate(['home']);
 
         }).catch((error) => {
-          console.log('Error adding user information to database:', error);
+          this.toastr.error(`Error adding user information to the database`);
         });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // Handle error
+        this.toastr.error(`Error adding user information to the database`);
+        
       });
   }
 }

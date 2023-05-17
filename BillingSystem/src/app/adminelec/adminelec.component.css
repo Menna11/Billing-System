@@ -1,0 +1,90 @@
+.container {
+    margin: 2rem auto;
+    width: 80%;
+  }
+  
+  .title {
+    font-size: 3rem;
+    color: #1D1F20;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  th,
+  td {
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #1D1F20;
+    color: white;
+    font-weight: bold;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #e2e2e2;
+  }
+  
+  .amount {
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  .status {
+    color: #888888;
+  }
+   .Date {
+    color: #888888;
+  }
+  
+  .pay-btn {
+    background-color: #1D1F20;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .pay-btn:hover {
+    background-color: #1e2124;
+  }
+
+  .menu {
+    display: flex;
+    
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .menu-item {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 2px solid transparent;
+    color: #555;
+  }
+  .menu-item.active {
+    border-bottom: 2px solid #007bff;
+    color: #007bff;
+  }
+  .menu-option {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: #555;
+  }
+  

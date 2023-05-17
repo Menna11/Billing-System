@@ -4,11 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // Add this line
 import { Route, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ElectricityBillComponent } from './user-dashboard/electricity-bill/electricity-bill.component';
+import { MatButtonModule } from '@angular/material/button';
+
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AdminComponent } from './admin/admin.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WalletComponent } from './wallet/wallet.component';
+import { AdminwalletComponent } from './adminwallet/adminwallet.component';
+import { AdminelecComponent } from './adminelec/adminelec.component';
+import { AdminsearchComponent } from './adminsearch/adminsearch.component';
+import { ServiceproviderComponent } from './serviceprovider/serviceprovider.component';
+import { ServofferComponent } from './servoffer/servoffer.component';
+import { ServofferviewComponent } from './servofferview/servofferview.component';
+import { ServofferdeleteComponent } from './servofferdelete/servofferdelete.component';
 
 //COMPONENTS are added in DECLARATIONS
 import { WaterBillComponent } from './water-bill/water-bill.component';
@@ -46,7 +60,16 @@ const routes:Route[]=[
     UserDashboardComponent,
     ElectricityBillComponent,
     LoginComponent,
-    SignupComponent,  
+    SignupComponent,
+    AdminComponent,
+    WalletComponent,
+    AdminwalletComponent,
+    AdminelecComponent,
+    AdminsearchComponent,
+    ServiceproviderComponent,
+    ServofferComponent,
+    ServofferviewComponent,
+    ServofferdeleteComponent,
     WaterBillComponent,
     MenucomponentComponent,
     Profile2Component,
@@ -58,10 +81,19 @@ const routes:Route[]=[
   imports: [
     HttpClientModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MatButtonModule,
+    ToastrModule.forRoot(),
+    RouterModule.forRoot(routes)
+    
+  ],
+  exports:[
+    MatButtonModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes),
     MatTableModule,
     MatCheckboxModule
   ],

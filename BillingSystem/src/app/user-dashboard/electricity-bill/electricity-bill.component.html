@@ -1,8 +1,26 @@
-<div style="margin-top: 150px; margin-left: 150px;">
-<form (submit)="submitBill()">
-    <label for="units">Total units used:</label>
-    <input type="number" id="units" name="units" [(ngModel)]="totalUnits">
-    <button type="submit">Submit bill</button>
-  </form>
+
+
+<div class="container">
+  <h1 class="title">Electricity Bills</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Price</th>
+        <th>Units used</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bill of bills">
+        <td class="amount">{{ bill.price }}LE</td>
+        <td class="status">{{ bill.units }}</td>
+        <td class="status">{{ bill.status }}</td>
+        <td class="Date">{{ bill.date }}</td>
+        <td><button class="pay-btn"(click)="Pay(bill)">Pay Now</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-  

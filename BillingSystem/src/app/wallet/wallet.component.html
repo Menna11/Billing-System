@@ -1,0 +1,25 @@
+<h1>My Wallet</h1>
+<div class="m-5">
+  <img width="250" src="https://files.framed.axure.cloud/gsc/RLRG5B/9f/34/93/9f349379cfcf4862b3e874e0e9e3fa93/images/user_swallet/u11.png?pageId=0615937a-0c7b-40eb-b578-21c9fbcb7323">
+</div>
+<div class="txt-w">
+  My Current Balance: {{Current}} LE
+</div>
+
+<div class="m-5">
+  <button (click)="showChargeWalletForm()">Charge Wallet</button>
+</div>
+
+<div *ngIf="showForm" class="m-5">
+  <form (submit)="submitVisa()">
+    <label for="visa-number">Visa Number:</label>
+    <input type="text" id="visa-number" name="visa-number"[(ngModel)]="visanum"><br><br>
+    <label for="visa-password">Visa Password:</label>
+    <input type="password" id="visa-password" name="visa-password"[(ngModel)]="visapass"><br><br>
+    <label for="charge">Amount to charge</label>
+    <input type="number" id="charge" name="charge"[(ngModel)]="charge"><br><br>
+    <button type="submit">Submit Visa</button>
+  </form>
+</div>
+ <input type="text" id="mobilenumber" name="mobilenumber"[(ngModel)]="mobnum">
+<button (click)="addphone()">addphone</button>
